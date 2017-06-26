@@ -1,0 +1,7 @@
+## Interface: 72000
+## Title: |cffA02C2Fbd|rTooltips
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## Dependencies: bdCore
+
+core.lua

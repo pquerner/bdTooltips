@@ -1,5 +1,5 @@
 ﻿local defaults = {}
-local bordersize = bdCore.config.profile.General.bordersize
+local bordersize = bdCore.config.persistent.General.bordersize
 
 local tooltip = CreateFrame('frame',nil)
 tooltip:SetFrameStrata("TOOLTIP")

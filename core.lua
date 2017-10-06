@@ -187,6 +187,7 @@ hide["PvE"] = true
 hide["PvP"] = true
 
 function setUnit(self)
+	if (self:IsForbidden()) then return end
 	local name, unit = self:GetUnit()
 	if not unit then return end
 	local lines = self:NumLines()

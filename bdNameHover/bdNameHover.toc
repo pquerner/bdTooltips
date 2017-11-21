@@ -1,0 +1,6 @@
+## Interface: 73000
+## Title: |cffA02C2Fbd|rNameHover
+## DefaultState: Enabled
+## LoadOnDemand: 0
+
+core.lua

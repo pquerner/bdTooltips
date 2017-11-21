@@ -1,4 +1,8 @@
-﻿local function getcolor()
+local addonName, core = ...
+
+local config = bdCore.config.profile['Tooltips']
+
+local function getcolor()
 	local reaction = UnitReaction("mouseover", "player") or 5
 	
 	if UnitIsPlayer("mouseover") then
@@ -24,13 +28,16 @@
 	end
 end
 
-local tooltip = CreateFrame('frame',nil)
-tooltip:SetFrameStrata("TOOLTIP")
-tooltip.text = tooltip:CreateFontString(nil, "OVERLAY")
-tooltip.text:SetFont(bdCore.media.font, 11, "THINOUTLINE")
+core.motooltip = CreateFrame('frame',nil)
+local motooltip = core.motooltip
+motooltip:SetFrameStrata("TOOLTIP")
+motooltip.text = motooltip:CreateFontString(nil, "OVERLAY")
+motooltip.text:SetFont(bdCore.media.font, 11, "THINOUTLINE")
 
 -- Show unit name at mouse
-tooltip:SetScript("OnUpdate", function(self)
+motooltip:SetScript("OnUpdate", function(self)
+	if (not config.mott) then motooltip:Hide() return end
+
 	if GetMouseFocus() and GetMouseFocus():IsForbidden() then self:Hide() return end
 	if GetMouseFocus() and GetMouseFocus():GetName()~="WorldFrame" then self:Hide() return end
 	if not UnitExists("mouseover") then self:Hide() return end
@@ -38,7 +45,7 @@ tooltip:SetScript("OnUpdate", function(self)
 	local scale = UIParent:GetEffectiveScale()
 	self.text:SetPoint("CENTER", UIParent, "BOTTOMLEFT", x, y+15)
 end)
-tooltip:SetScript("OnEvent", function(self)
+motooltip:SetScript("OnEvent", function(self)
 	if GetMouseFocus():GetName()~="WorldFrame" then return end
 	
 	local name = UnitName("mouseover")
@@ -54,4 +61,5 @@ tooltip:SetScript("OnEvent", function(self)
 
 	self:Show()
 end)
-tooltip:RegisterEvent("UPDATE_MOUSEOVER_UNIT")
+motooltip:RegisterEvent("UPDATE_MOUSEOVER_UNIT")
+

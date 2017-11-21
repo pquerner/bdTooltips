@@ -1,4 +1,28 @@
-﻿local defaults = {}
+﻿local addonName, core = ...
+
+local defaults = {}
+
+defaults[#defaults+1] = {enablett = {
+	type = "checkbox",
+	value = true,
+	label = "Eanble Main Tooltips"
+}}
+defaults[#defaults+1] = {mott = {
+	type = "checkbox",
+	value = true,
+	label = "Eanble mini name hover tooltips",
+	callback = function() configCallback() end
+}}
+
+bdCore:addModule("Tooltips", defaults)
+local config = bdCore.config.profile['Tooltips']
+
+local configCallback = function()
+	if config.mott then
+		core.motooltip:Show()
+	end
+end
+
 local bordersize = bdCore.config.persistent.General.bordersize
 
 local tooltip = CreateFrame('frame',nil)

@@ -5,3 +5,4 @@
 ## Dependencies: bdCore
 
 core.lua
+namehover.lua

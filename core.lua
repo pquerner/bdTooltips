@@ -2,6 +2,8 @@
 
 local defaults = {}
 
+local configCallback = function() end
+
 defaults[#defaults+1] = {enablett = {
 	type = "checkbox",
 	value = true,

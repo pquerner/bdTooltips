@@ -7,12 +7,12 @@ local configCallback = function() end
 defaults[#defaults+1] = {enablett = {
 	type = "checkbox",
 	value = true,
-	label = "Eanble Main Tooltips"
+	label = "Enable Main Tooltips"
 }}
 defaults[#defaults+1] = {mott = {
 	type = "checkbox",
 	value = true,
-	label = "Eanble mini name hover tooltips",
+	label = "Enable mini name hover tooltips",
 	callback = function() configCallback() end
 }}
 
